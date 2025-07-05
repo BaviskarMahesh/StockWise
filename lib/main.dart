@@ -11,16 +11,17 @@ class StockWiseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        // Add your providers here later
-      ],
-      child: MaterialApp(
+    // return MultiProvider(
+    //   providers: [
+    //     // Add your providers here later
+    //   ],
+    return MaterialApp(
+      
         debugShowCheckedModeBanner: false,
         title: 'StockWise',
         onGenerateRoute: AppRoutes.generateRoute,
         initialRoute: AppRoutes.loginScreen,
-      ),
+      
     );
   }
 }
