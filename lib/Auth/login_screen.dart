@@ -8,7 +8,7 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
+ 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
@@ -214,7 +214,7 @@ ButtonUtil.customElevatedButton(
                         fontFamily: 'Font1',
                         fontSize: screenHeight * 0.018,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xffC9C6FC),
+                        color: const Color(0xff7871F8),
                       ),
                     ),
                   ),

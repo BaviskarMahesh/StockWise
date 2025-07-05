@@ -14,11 +14,12 @@ class TextfieldUtil {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double fontSize = screenHeight * 0.017; // ≈13 for medium screens
 
-    // Responsive vertical padding (approx 10) and horizontal (approx 16)
+    
     final double verticalPadding = screenHeight * 0.013;
     final double horizontalPadding = screenWidth * 0.04;
 
     return InputDecoration(
+      
       hintText: hintText,
       hintStyle: hintStyle ??
           TextStyle(
