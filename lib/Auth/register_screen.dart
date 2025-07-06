@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stockwise/routes/app_routes.dart';
 import 'package:stockwise/utils/textfield.dart';
 import 'package:stockwise/utils/elevatedButton.dart';
 
@@ -29,12 +30,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.15),
+              SizedBox(height: screenHeight * 0.26),
 
               Padding(
                 padding: EdgeInsets.only(left: screenWidth * 0.015),
                 child: Text(
-                  "Create your account",
+                  "Create an account",
                   style: TextStyle(
                     fontFamily: 'Font1',
                     fontSize: screenHeight * 0.034,
@@ -42,6 +43,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.015),
+                child: Text(
+                "Sign up now and start exploring",
+                    style: TextStyle(
+                      fontFamily: 'Font1',
+                      fontSize: screenHeight * 0.015,
+                      color: Color(0xff969292),
+                    ),
+                  ),
+              ),
+
 
               SizedBox(height: screenHeight * 0.06),
 
@@ -49,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               TextfieldUtil.customTextField(
                 context: context,
                 controller: fullName,
-                hintText: "Enter your full name",
+                labelText: "Full name",
                 prefixIcon: Icons.person,
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -58,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               TextfieldUtil.customTextField(
                 context: context,
                 controller: email,
-                hintText: "Enter your Email address",
+                labelText: "Email address",
                 prefixIcon: Icons.email_outlined,
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -67,12 +80,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               TextfieldUtil.customTextField(
                 context: context,
                 controller: password,
-                hintText: "Create a Password",
+                labelText: "Password",
                 prefixIcon: Icons.lock,
                 obscureText: passwordVisible,
-                suffixIcon: passwordVisible
-                    ? Icons.visibility_off_outlined
-                    : Icons.visibility_outlined,
+                suffixIcon:
+                    passwordVisible
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
                 onSuffixIconPressed: () {
                   setState(() {
                     passwordVisible = !passwordVisible;
@@ -143,8 +157,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color.fromARGB(255, 148, 141, 141)
-                              .withOpacity(0.3),
+                          color: const Color.fromARGB(
+                            255,
+                            148,
+                            141,
+                            141,
+                          ).withOpacity(0.3),
                           blurRadius: 4,
                           offset: const Offset(0, 2),
                         ),
@@ -176,7 +194,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(width: screenWidth * 0.01),
                   InkWell(
                     onTap: () {
-                      // TODO: Navigate to login screen
+                      Navigator.pushNamed(context, AppRoutes.loginScreen);
                     },
                     child: Text(
                       "Login",

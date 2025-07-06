@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class TextfieldUtil {
   static InputDecoration inputDecoration({
     required BuildContext context,
-    String? hintText,
-    TextStyle? hintStyle,
+    String? labelText,
+    TextStyle? labelStyle,
     IconData? prefixIcon,
     Color? prefixIconColor,
     Widget? suffixIcon,
@@ -12,21 +12,23 @@ class TextfieldUtil {
   }) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double fontSize = screenHeight * 0.017;  
+    final double fontSize = screenHeight * 0.017;
 
-    
     final double verticalPadding = screenHeight * 0.013;
     final double horizontalPadding = screenWidth * 0.04;
 
     return InputDecoration(
-      
-      hintText: hintText,
-      hintStyle: hintStyle ??
-          TextStyle(
-            color: const Color(0xff969292),
-            fontFamily: 'Font1',
-            fontSize: fontSize,
-          ),
+      labelText: labelText,
+      labelStyle: TextStyle(
+        color: const Color(0xff969292), // Default (unfocused) label color
+        fontFamily: 'Font1',
+        fontSize: fontSize,
+      ),
+      floatingLabelStyle: TextStyle(
+        color: const Color(0xff7871F8), // Focused (active) label color
+        fontFamily: 'Font1',
+        fontSize: fontSize,
+      ),
       filled: true,
       fillColor: const Color(0xffF2F1FE),
       contentPadding: EdgeInsets.symmetric(
@@ -35,28 +37,24 @@ class TextfieldUtil {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(
-          color: Color.fromARGB(255, 202, 195, 195),
-        ),
+        borderSide: const BorderSide(color: Color.fromARGB(255, 202, 195, 195)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(
-          color: Color(0xffC9C6FC),
-        ),
+        borderSide: const BorderSide(color: Color(0xffC9C6FC),
+        width: 2.0),
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(
-          color: Color(0xff969292),
-        ),
+        borderSide: const BorderSide(color: Color(0xff969292)),
       ),
-      prefixIcon: prefixIcon != null
-          ? Icon(
-              prefixIcon,
-              color: prefixIconColor ?? const Color(0xff969292),
-            )
-          : null,
+      prefixIcon:
+          prefixIcon != null
+              ? Icon(
+                prefixIcon,
+                color: prefixIconColor ?? const Color(0xff969292),
+              )
+              : null,
       suffixIcon: suffixIcon,
     );
   }
@@ -64,8 +62,8 @@ class TextfieldUtil {
   static Widget customTextField({
     required BuildContext context,
     required TextEditingController controller,
-    String? hintText,
-    TextStyle? hintStyle,
+    String? labelText,
+    TextStyle? labelStyle,
     IconData? prefixIcon,
     Color? prefixIconColor,
     IconData? suffixIcon,
@@ -84,19 +82,20 @@ class TextfieldUtil {
       onChanged: onChanged,
       decoration: inputDecoration(
         context: context,
-        hintText: hintText,
-        hintStyle: hintStyle,
+        labelText: labelText,
+        labelStyle: labelStyle,
         prefixIcon: prefixIcon,
         prefixIconColor: prefixIconColor,
-        suffixIcon: suffixIcon != null
-            ? IconButton(
-                icon: Icon(
-                  suffixIcon,
-                  color: suffixIconColor ?? const Color(0xff969292),
-                ),
-                onPressed: onSuffixIconPressed,
-              )
-            : null,
+        suffixIcon:
+            suffixIcon != null
+                ? IconButton(
+                  icon: Icon(
+                    suffixIcon,
+                    color: suffixIconColor ?? const Color(0xff969292),
+                  ),
+                  onPressed: onSuffixIconPressed,
+                )
+                : null,
       ),
     );
   }
