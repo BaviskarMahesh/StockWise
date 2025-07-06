@@ -27,6 +27,7 @@ class ButtonUtil {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), // Same as textfield
         minimumSize: effectiveSize,
         elevation: 4,
+        // ignore: deprecated_member_use
         shadowColor: const Color.fromARGB(255, 148, 141, 141).withOpacity(0.3),
         splashFactory: InkRipple.splashFactory,
       ),

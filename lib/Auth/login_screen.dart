@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stockwise/routes/app_routes.dart';
 import 'package:stockwise/utils/textfield.dart';
-import 'package:stockwise/utils/elevatedButton.dart';
+import 'package:stockwise/utils/elevated_Button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -139,7 +139,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontFamily: 'Font1',
                   fontSize: screenHeight * 0.02,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.organizationRegistration,
+                  );
+                },
               ),
 
               SizedBox(height: screenHeight * 0.04),
@@ -180,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Center(
                 child: InkWell(
                   onTap: () {
-                    // TODO: Handle Google sign-in
+                    //
                   },
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
@@ -198,6 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             148,
                             141,
                             141,
+                            // ignore: deprecated_member_use
                           ).withOpacity(0.3),
                           blurRadius: 4,
                           offset: const Offset(0, 2),
@@ -232,7 +238,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, AppRoutes.registerScreen);
-                      // TODO: Navigate to signup
+                      //
                     },
                     child: Text(
                       "Create an account",

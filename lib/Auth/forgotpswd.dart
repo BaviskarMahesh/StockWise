@@ -11,12 +11,10 @@ class _ForgotpswdState extends State<Forgotpswd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Text("Forgot password SCreen",style: TextStyle(
-            fontFamily: "Font1"
-          ),),
-        ),
+      body: Center(
+        child: Text("Forgot password SCreen",style: TextStyle(
+          fontFamily: "Font1"
+        ),),
       ),
     );
   }
