@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stockwise/Auth/forgotpswd.dart';
 import 'package:stockwise/Auth/login_screen.dart';
 import 'package:stockwise/Auth/register_screen.dart';
+import 'package:stockwise/screens/AddressDetail_Screen.dart';
+import 'package:stockwise/screens/homescreen.dart';
 import 'package:stockwise/screens/organization_registration.dart';
 
 class AppRoutes {
@@ -9,6 +11,8 @@ class AppRoutes {
   static const String registerScreen = '/registerScreen';
   static const String forgotPassword = '/forgotPassword';
   static const String organizationRegistration = '/organizationRegistration';
+  static const String addressDetailScreen = '/addressDetailScreen';
+  static const String homescreen = '/homescreen';
 
   static Route<dynamic> generateRoute(RouteSettings setting) {
     switch (setting.name) {
@@ -22,6 +26,11 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const OrganizationRegistration(),
         );
+      case addressDetailScreen:
+        return MaterialPageRoute(builder: (_) => AddressdetailScreen());
+      case homescreen:
+        return MaterialPageRoute(builder: (_) => Homescreen());
+
       default:
         return _errorRoute();
     }
@@ -29,15 +38,11 @@ class AppRoutes {
 
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(
-      builder:
-          (_) => const Scaffold(
-            body: Center(
-              child: Text(
-                "Page not found!",
-                style: TextStyle(fontFamily: 'Font1'),
-              ),
-            ),
-          ),
+      builder: (_) => const Scaffold(
+        body: Center(
+          child: Text("Page not found!", style: TextStyle(fontFamily: 'Font1')),
+        ),
+      ),
     );
   }
 }

@@ -26,7 +26,7 @@ class GradientHeader extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Color(0xff7871F8),
-                  Color(0xFFD6A5FD),
+                  Color.fromARGB(255, 196, 151, 232),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -44,43 +44,23 @@ class GradientHeader extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: screenHeight * 0.027,
+                  fontSize: screenHeight * 0.026,
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Font1',
                 ),
               ),
-              SizedBox(height: screenHeight * 0.03),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.04,
-                  vertical: screenHeight * 0.015,
-                ),
-                decoration: BoxDecoration(
+              SizedBox(height: screenHeight * 0.02),
+              Text(
+                subText,
+                style: TextStyle(
+                  fontSize: screenHeight*0.016,
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(screenHeight * 0.015),
+                  fontWeight: FontWeight.normal,
+                  fontFamily: 'Font1',
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.calendar_today_outlined,
-                        size: screenHeight * 0.022, color: Colors.black),
-                    SizedBox(width: screenWidth * 0.02),
-                    Text(
-                      subText,
-                      style: TextStyle(
-                        fontSize: screenHeight * 0.017,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Font1',
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(width: screenWidth * 0.01),
-                    Icon(Icons.keyboard_arrow_down,
-                        size: screenHeight * 0.022, color: Colors.black),
-                  ],
-                ),
-              ),
+
+              )
             ],
           ),
         ),
@@ -92,24 +72,19 @@ class GradientHeader extends StatelessWidget {
 class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Path path = Path();
+    final path = Path();
 
-    path.lineTo(0, size.height - size.height * 0.12);
+    // Start from top-left
+    path.lineTo(0, size.height * 0.75);
 
-    path.quadraticBezierTo(
-      size.width * 0.25,
-      size.height,
-      size.width * 0.5,
-      size.height - size.height * 0.06,
+    // Smooth curve that flattens gradually toward the right
+    path.cubicTo(
+      size.width * 0.25, size.height,     // First control point (higher)
+      size.width * 0.55, size.height * 0.6, // Second control point (start flattening)
+      size.width, size.height * 0.7,      // End point (more flat)
     );
 
-    path.quadraticBezierTo(
-      size.width * 0.75,
-      size.height - size.height * 0.12,
-      size.width,
-      size.height - size.height * 0.04,
-    );
-
+    // Complete the shape
     path.lineTo(size.width, 0);
     path.close();
 
