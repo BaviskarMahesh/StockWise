@@ -176,18 +176,36 @@ Padding(
 SizedBox(height: screenHeight*0.04,),
 
 
-ButtonUtil.customElevatedButton(
-  context: context,
-  buttonColor: const Color(0xff7871F8),
-  text: "Sign in with Google",
-  buttonSize: Size(screenWidth * 0.88, screenHeight * 0.065),
-  textStyle: TextStyle(
-    fontFamily: 'Font1',
-    color: Color(0xffF2F1FE),
-    fontSize: screenHeight * 0.02,
+Center(
+  child: InkWell(
+    onTap: () {
+      // TODO: Handle Google sign-in
+    },
+    borderRadius: BorderRadius.circular(20),
+    child: Container(
+      width: screenWidth * 0.88,
+      height: screenHeight * 0.065,
+      decoration: BoxDecoration(
+        color: const Color(0xffF2F1FE), // Same as screen background
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: const Color.fromARGB(255, 148, 141, 141).withOpacity(0.3),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+        // border: Border.all(color: const Color(0xff7871F8), width: 1.2), // Optional: subtle border
+      ),
+      alignment: Alignment.center,
+      child: Image.asset(
+        'lib/assets/images/icons/google_icon.png',
+        height: screenHeight * 0.035,
+      ),
+    ),
   ),
-  onPressed: () {},
 ),
+
 
               SizedBox(height: screenHeight * 0.025),
 
