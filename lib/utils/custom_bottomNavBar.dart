@@ -40,13 +40,17 @@ class CustomBottomNav extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Left side items (Home, Items)
               Row(
-                children: List.generate(2, (index) => _buildItem(index, icons, labels, screenHeight, screenWidth)),
+                children: List.generate(
+                  2,
+                  (index) => _buildItem(index, icons, labels, screenHeight, screenWidth),
+                ),
               ),
-              // Right side items (Stats, Menu)
               Row(
-                children: List.generate(2, (index) => _buildItem(index + 2, icons, labels, screenHeight, screenWidth)),
+                children: List.generate(
+                  2,
+                  (index) => _buildItem(index + 2, icons, labels, screenHeight, screenWidth),
+                ),
               ),
             ],
           ),
@@ -63,6 +67,7 @@ class CustomBottomNav extends StatelessWidget {
     double screenWidth,
   ) {
     final isSelected = index == currentIndex;
+
     return GestureDetector(
       onTap: () => onTabSelected(index),
       child: SizedBox(

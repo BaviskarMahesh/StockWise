@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stockwise/routes/app_routes.dart';
 
 class AnimatedGradientFAB extends StatefulWidget {
   const AnimatedGradientFAB({super.key});
@@ -43,7 +44,7 @@ class _AnimatedGradientFABState extends State<AnimatedGradientFAB>
           },
           child: FloatingActionButton(
             onPressed: () {
-              // TODO: action like QR Scan
+              Navigator.pushNamed(context, AppRoutes.barcodeScanner);
             },
             shape: const CircleBorder(),
             backgroundColor: Colors.white, // base color under gradient

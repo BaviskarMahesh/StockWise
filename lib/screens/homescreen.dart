@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:stockwise/screens/itemScreen.dart';
+import 'package:stockwise/screens/menuScreen.dart';
+import 'package:stockwise/screens/statScreen.dart';
 import 'package:stockwise/utils/animatedFAB.dart';
 import 'package:stockwise/utils/custom_bottomNavBar.dart';
 
@@ -13,77 +16,16 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    const Center(
-      child: Text("Home", style: TextStyle(fontFamily: 'Font1')),
-    ),
-    const Center(
-      child: Text("Items", style: TextStyle(fontFamily: 'Font1')),
-    ),
-    const Center(
-      child: Text("Stats", style: TextStyle(fontFamily: 'Font1')),
-    ),
-    const Center(
-      child: Text("Menu", style: TextStyle(fontFamily: 'Font1')),
-    ),
-  ];
-
-  String get formattedDate {
-    return DateFormat("EEE, d MMM yy").format(DateTime.now());
-  }
+  String get formattedDate =>
+      DateFormat("EEE, d MMM yy").format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: const Color(0xffF2F1FE),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.06),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 50),
-
-              
-              Row(
-                children: [
-                  const Icon(Icons.wb_sunny, color: Colors.deepPurple),
-                  const SizedBox(width: 8),
-                  Text(
-                    formattedDate,
-                    style: TextStyle(
-                      fontFamily: 'Font1',
-                      color: Colors.deepPurple,
-                      fontSize: height * 0.018,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Welcome, Mahesh!',
-                style: TextStyle(
-                  fontFamily: 'Font1',
-                  fontWeight: FontWeight.bold,
-                  fontSize: height * 0.03,
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              /// 🟣 Inventory Summary on Home Tab
-              if (_currentIndex == 0) inventorySummaryCard(context),
-
-              const SizedBox(height: 10),
-              _pages[_currentIndex],
-            ],
-          ),
-        ),
-      ),
-
-      /// FAB + Bottom Navigation
       floatingActionButton: const AnimatedGradientFAB(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: CustomBottomNav(
@@ -94,10 +36,60 @@ class _HomescreenState extends State<Homescreen> {
           });
         },
       ),
+      body: SafeArea(
+        child: IndexedStack(
+          index: _currentIndex,
+          children: [
+            _homeTabContent(context), // Tab 0
+            const Itemscreen(),       // Tab 1
+            const Statscreen(),       // Tab 2
+            const Menuscreen(),       // Tab 3
+          ],
+        ),
+      ),
     );
   }
 
-  /// 📦 Inventory Summary Card
+  Widget _homeTabContent(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: width * 0.06),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              const Icon(Icons.wb_sunny, color: Colors.deepPurple),
+              const SizedBox(width: 8),
+              Text(
+                formattedDate,
+                style: TextStyle(
+                  fontFamily: 'Font1',
+                  color: Colors.deepPurple,
+                  fontSize: height * 0.018,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Welcome, Mahesh!',
+            style: TextStyle(
+              fontFamily: 'Font1',
+              fontWeight: FontWeight.bold,
+              fontSize: height * 0.03,
+            ),
+          ),
+          const SizedBox(height: 20),
+          inventorySummaryCard(context),
+        ],
+      ),
+    );
+  }
+
   Widget inventorySummaryCard(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -150,9 +142,8 @@ class _HomescreenState extends State<Homescreen> {
               children: [
                 _summaryItem("Category", "24", Icons.category),
                 _summaryItem("Folders", "15", Icons.folder),
-
                 _summaryItem("Total Qty", "479 Items", Icons.inventory),
-                _summaryItem("Total Value", "\$1,067.50", Icons.attach_money),
+                _summaryItem("Total Value", "\$1,067.50", Icons.currency_rupee),
               ],
             ),
           ],
