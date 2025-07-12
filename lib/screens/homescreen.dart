@@ -40,10 +40,10 @@ class _HomescreenState extends State<Homescreen> {
         child: IndexedStack(
           index: _currentIndex,
           children: [
-            _homeTabContent(context), // Tab 0
-            const Itemscreen(),       // Tab 1
-            const Statscreen(),       // Tab 2
-            const Menuscreen(),       // Tab 3
+            _homeTabContent(context),  
+            const Itemscreen(),        
+            const Statscreen(),       
+            const Menuscreen(),      
           ],
         ),
       ),

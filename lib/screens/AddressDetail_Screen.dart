@@ -38,6 +38,9 @@ class _AddressdetailScreenState extends State<AddressdetailScreen> {
             fontSize: screenHeight * 0.022,
           ),
         ),
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
       ),
       backgroundColor: const Color(0xffF2F1FE),
       body: SingleChildScrollView(

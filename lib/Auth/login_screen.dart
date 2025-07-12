@@ -32,14 +32,14 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               SizedBox(height: screenHeight * 0.22),
 
-              // Title
+         
               Padding(
                 padding: EdgeInsets.only(left: screenWidth * 0.015),
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
                       fontFamily: 'Font1',
-                      fontSize: screenHeight * 0.036, // ~30
+                      fontSize: screenHeight * 0.036,  
                     ),
                     children: const [
                       TextSpan(
