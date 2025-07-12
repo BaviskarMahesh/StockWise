@@ -192,8 +192,8 @@ ButtonUtil.customElevatedButton(
         const SnackBar(content: Text("Please fill all the details.")),
       );
     } else {
-      // Navigate or process the data
-      Navigator.pushNamed(context, AppRoutes.addressDetailScreen); // Replace with your next route
+      
+      Navigator.pushNamed(context, AppRoutes.addressDetailScreen);  
     }
   },
 ),

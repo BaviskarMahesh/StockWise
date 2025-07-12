@@ -21,8 +21,7 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+     
 
     return Scaffold(
       backgroundColor: const Color(0xffF2F1FE),
@@ -107,6 +106,7 @@ class _HomescreenState extends State<Homescreen> {
           ),
           boxShadow: [
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Colors.deepPurple.withOpacity(0.2),
               blurRadius: 12,
               offset: const Offset(0, 6),

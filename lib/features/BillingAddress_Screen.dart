@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:stockwise/utils/elevated_Button.dart';
 import 'package:stockwise/utils/textfield.dart';

@@ -133,7 +133,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Center(
                 child: InkWell(
                   onTap: () {
-                    // TODO: Handle Google sign-up
+                    
                   },
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
@@ -145,6 +145,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       boxShadow: [
                         BoxShadow(
                           color: const Color.fromARGB(255, 148, 141, 141)
+                              // ignore: deprecated_member_use
                               .withOpacity(0.3),
                           blurRadius: 4,
                           offset: const Offset(0, 2),
@@ -177,7 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(width: screenWidth * 0.01),
                   InkWell(
                     onTap: () {
-                      // TODO: Navigate to login screen
+                       
                     },
                     child: Text(
                       "Login",
